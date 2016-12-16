@@ -1,16 +1,14 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
-keywords: Zhuang Ma, 马壮
+description: my blogs
+keywords: xings
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-我是马壮，码而生，码而立。
-
-仰慕「优雅编码的艺术」。
+Technology
 
 ## 坚信
 
@@ -30,16 +28,9 @@ permalink: /about/
     {% endfor %}
 </div>
 
-#### Mobile Developer Keywords
+#### Tools Developer Keywords
 <div class="btn-inline">
-    {% for keyword in site.skill_mobile_app_keywords %}
-    <button class="btn btn-outline" type="button">{{ keyword }}</button>
-    {% endfor %}
-</div>
-
-#### Windows Developer Keywords
-<div class="btn-inline">
-    {% for keyword in site.skill_windows_keywords %}
+    {% for keyword in site.skill_tools_keywords %}
     <button class="btn btn-outline" type="button">{{ keyword }}</button>
     {% endfor %}
 </div>
