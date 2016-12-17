@@ -12,7 +12,7 @@ mybatis官方提供逆向工程 可以针对单表自动生成mybatis执行所�
 MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自由组合完成比较复杂的查询。
 
 
-[官方文档](http://www.mybatis.org/generator/configreference/xmlconfig.html)。
+[官方文档](http://www.mybatis.org/generator/configreference/xmlconfig.html)
 
 
 ### maven依赖
