@@ -21,7 +21,7 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 * Mybatis
 
 ### 使用方法
-* 配置逆向工程配置文件，（[官方配置说明](http://www.mybatis.org/generator/configreference/xmlconfig.htl)），主要配置以下几处
+* 配置逆向工程配置文件 genreatorConfig.xml，（[官方配置说明](http://www.mybatis.org/generator/configreference/xmlconfig.htl)），主要配置以下几处
 
   1. 数据库连接信息
 
@@ -35,5 +35,9 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 ![](/images/posts/java/mybatis-example.jpeg)
 
 ### 示例
-参见[示例](https://github.com/timesculptor/redis-client)
+genreatorConfig.xml文件配置
+
+java代码生成
+
+具体示例参见 github: [mybatis-generator](https://github.com/timesculptor/mybatis-generator)
 
