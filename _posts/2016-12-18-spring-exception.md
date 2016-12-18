@@ -6,7 +6,7 @@ description: Spring mvc全局异常处理。
 keywords: Spring
 ---
 
-springmvc提供全局异常处理器（一个系统只有一个异常处理器）进行统一异常处理
+springmvc提供全局异常处理器进行统一异常处理
 
 ##  全局异常
 spring mvc可以通过实现HandlerExceptionResolver接口自定义异常。HandlerExceptionResolver中仅有一个方法
@@ -26,7 +26,8 @@ spring mvc可以通过实现HandlerExceptionResolver接口自定义异常。Hand
 public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        if(!handler.getClass().isAnnotationPresent(ResponseBody.class)) {
+        String accept = request.getHeader("Content-Type");
+        if(null!=accept && accept.indexOf("application/json") <= -1) {
             StringBuilder detail = new StringBuilder();
             ModelAndView exceptionView = new ModelAndView("error");
             if(ex != null) {
@@ -61,7 +62,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
 <bean id="exceptionResolver"
           class="com.springapp.mvc.exception.GlobalExceptionResolver">
-    </bean>
+</bean>
 
 ```
 
@@ -78,7 +79,23 @@ apierror.vm
 ```xml
 ${errorResponse}
 ```
-##  示例
+
+## 示例
+
+	@RequestMapping(value = "/testPage")
+	@ResponseBody
+	public  String test1(){
+		int a = 1/0;
+		return "ok";
+	}
+	
+返回结果：
+![](/images/posts/java/spring-exception.jpeg)
+![](/images/posts/java/spring-exception-nojson.jpeg)
+
+
+
+
 
 
 
