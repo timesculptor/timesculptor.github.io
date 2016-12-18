@@ -81,6 +81,8 @@ ${errorResponse}
 
 ## 示例
 
+```java
+
 	@RequestMapping(value = "/testPage")
 	@ResponseBody
 	public  String test1(){
@@ -88,9 +90,15 @@ ${errorResponse}
 		return "ok";
 	}
 	
+```
+	
 返回结果：
 
+Json请求
+
 ![](/images/posts/java/spring-exception.jpeg)
+
+其他请求
 
 ![](/images/posts/java/spring-exception-nojson.jpeg)
 
