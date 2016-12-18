@@ -16,7 +16,7 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 
 
 ## 使用方法
-###修改配置文件
+### 修改配置文件
 
 配置逆向工程配置文件 genreatorConfig.xml，（[官方配置说明](http://www.mybatis.org/generator/configreference/xmlconfig.htl)），主要配置以下几处
 
@@ -25,6 +25,7 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
   2. 指定生成文件存放的路径
 
   3. 指定数据库中表
+
   
 ```xml
 
@@ -82,7 +83,7 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 
 ```
 
-###运行java生成程序
+### 运行java生成程序
 
 生成 mapper.java、mapper.xml、Example.java、po等文件。
 
