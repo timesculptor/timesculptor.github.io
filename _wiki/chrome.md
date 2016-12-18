@@ -20,4 +20,6 @@ keywords: Chrome
 | 打开清除浏览数据           | shift+cmd+delete              |
 | 地址栏光标移动到开头或结尾           | cmd+左右箭头键                |
 | 关闭当前标签页           | cmd+w                |
+| 后退或前进           | cmd+[ 或 ]               |
+
 

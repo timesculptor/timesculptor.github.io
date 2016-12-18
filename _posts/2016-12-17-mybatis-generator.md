@@ -28,6 +28,62 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
   2. 指定生成文件存放的路径
 
   3. 指定数据库中表
+  
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/testdb"
+						userId="root"
+			password="123456">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="cn.qs.model"
+			targetProject="src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="cn.qs.mapper"
+			targetProject="src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.qs.mapper"
+			targetProject="src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 -->
+		<table tableName="qqvip_card_data"></table>
+		<table tableName="qqvip_card_config"></table>
+
+	</context>
+</generatorConfiguration>
+
+
+```
 
 * 运行java生成程序，生成 mapper.java、mapper.xml、Example.java、po等文件。
 * 使用生成的文件
