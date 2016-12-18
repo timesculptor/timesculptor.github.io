@@ -19,5 +19,5 @@ keywords: Chrome
 | 打开历史记录           | cmd+y               |
 | 打开清除浏览数据           | shift+cmd+delete              |
 | 地址栏光标移动到开头或结尾           | cmd+左右箭头键                |
-
+| 关闭当前标签页           | cmd+w                |
 
