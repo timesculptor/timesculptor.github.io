@@ -86,6 +86,42 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 ```
 
 * 运行java生成程序，生成 mapper.java、mapper.xml、Example.java、po等文件。
+
+
+
+```java
+public class GeneratorSqlmap {
+
+	public void generator() throws Exception{
+
+		List<String> warnings = new ArrayList<String>();
+		boolean overwrite = true;
+		//指定 逆向工程配置文件
+		String genConfig = "conf/core/generatorConfig.xml";
+		ClassLoader classLoader = getClass().getClassLoader();
+		File configFile = new File(classLoader.getResource(genConfig).getFile());
+		ConfigurationParser cp = new ConfigurationParser(warnings);
+		Configuration config = cp.parseConfiguration(configFile);
+		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
+				callback, warnings);
+		myBatisGenerator.generate(null);
+
+	} 
+	public static void main(String[] args) throws Exception {
+		try {
+			GeneratorSqlmap generatorSqlmap = new GeneratorSqlmap();
+			generatorSqlmap.generator();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+```
 * 使用生成的文件
 
 ![](/images/posts/java/mybatis-example.jpeg)
