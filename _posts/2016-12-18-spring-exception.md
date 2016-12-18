@@ -65,7 +65,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
 ```
 
-### 在mvc配置文件中配置全局异常处理器
+### 在视图中解析异常信息
 error.vm
 
 ```xml
@@ -89,7 +89,9 @@ ${errorResponse}
 	}
 	
 返回结果：
+
 ![](/images/posts/java/spring-exception.jpeg)
+
 ![](/images/posts/java/spring-exception-nojson.jpeg)
 
 
