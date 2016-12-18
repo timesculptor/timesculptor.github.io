@@ -117,7 +117,7 @@ public class GeneratorSqlmap {
 
 
 ```
-* 使用生成的文件
+使用生成的文件
 
 ![](/images/posts/java/mybatis-example.jpeg)
 
