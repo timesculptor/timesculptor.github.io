@@ -27,13 +27,13 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         String accept = request.getHeader("Content-Type");
-        if(null!=accept && accept.indexOf("application/json") <= -1) {
+        if (null != accept && accept.indexOf("application/json") <= -1) {
             StringBuilder detail = new StringBuilder();
             ModelAndView exceptionView = new ModelAndView("error");
-            if(ex != null) {
+            if (ex != null) {
                 StackTraceElement[] arr = ex.getStackTrace();
                 int len = arr.length;
-                for(int i = 0; i < len; ++i) {
+                for (int i = 0; i < len; ++i) {
                     StackTraceElement element = arr[i];
                     detail.append(element.toString().replace("\t", "").replace("\n", "").replace("\r", ""));
                 }
@@ -52,7 +52,6 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
         }
     }
 }
-
 
 ```
 
