@@ -8,20 +8,16 @@ keywords: Mybatis
 
 mybatis官方提供逆向工程 可以针对单表自动生成mybatis执行所需要的代码
 
-### 逆向工程
-MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自由组合完成比较复杂的查询。
+## 逆向工程
+MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自由组合完成比较复杂的查询，maven依赖 MyBatis Generator Core。
 
 
 [官方文档](http://www.mybatis.org/generator/configreference/xmlconfig.html)
 
 
-### maven依赖
-* MyBatis Generator Core
-* MySQL Connector/J
-* Mybatis
-
-### 使用方法
-* 配置逆向工程配置文件 genreatorConfig.xml，（[官方配置说明](http://www.mybatis.org/generator/configreference/xmlconfig.htl)），主要配置以下几处
+## 使用方法
+###修改配置文件
+配置逆向工程配置文件 genreatorConfig.xml，（[官方配置说明](http://www.mybatis.org/generator/configreference/xmlconfig.htl)），主要配置以下几处
 
   1. 数据库连接信息
 
@@ -85,9 +81,8 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 
 ```
 
-* 运行java生成程序，生成 mapper.java、mapper.xml、Example.java、po等文件。
-
-
+###运行java生成程序
+生成 mapper.java、mapper.xml、Example.java、po等文件。
 
 ```java
 public class GeneratorSqlmap {
@@ -126,7 +121,7 @@ public class GeneratorSqlmap {
 
 ![](/images/posts/java/mybatis-example.jpeg)
 
-### 示例
+## 示例
 genreatorConfig.xml文件配置
 
 java代码生成
