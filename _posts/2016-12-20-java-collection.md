@@ -50,8 +50,25 @@ MultiValueMap<String,String> mutiMap = new LinkedMultiValueMap();
         
 ```
 
-MultiMap实现是通过封装Map<K, List<V>> targetMap
+spring的实现最简单，通过封装```Map<K, List<V>> targetMap```j结构
+add 方法
+```java
 
+private final Map<K, List<V>> targetMap;
+
+public LinkedMultiValueMap() {
+		this.targetMap = new LinkedHashMap<K, List<V>>();
+	}
+	
+public void add(K key, V value) {
+		List<V> values = this.targetMap.get(key);
+		if (values == null) {
+			values = new LinkedList<V>();
+			this.targetMap.put(key, values);
+		}
+		values.add(value);
+	}
+```
 
 
 
