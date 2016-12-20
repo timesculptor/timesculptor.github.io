@@ -1,6 +1,6 @@
 ---
 layout: post
-title: java的Multimap 
+title: MultiValueMap-一个key对应多个value 
 categories: Java
 description: java的Multimap。
 keywords: Map
@@ -28,10 +28,10 @@ package com.google.common.collect;
   
 ```java
 
-	MultiValueMap  multiValueMap = new MultiValueMap();
-	multiValueMap.put("a","b");
-	multiValueMap.put("a", "c");
-	Collection a =multiValueMap.getCollection("a");
+ MultiValueMap  multiValueMap = new MultiValueMap();
+ multiValueMap.put("a","b");
+ multiValueMap.put("a", "c");
+ Collection a =multiValueMap.getCollection("a");
         
 ```
 
@@ -43,10 +43,10 @@ package com.google.common.collect;
 
 ```java
 
- MultiValueMap<String,String> mutiMap = new LinkedMultiValueMap();
- mutiMap.add("a","b");
- mutiMap.add("a", "c");
- List<String> value = mutiMap.get("a");
+ MultiValueMap<String,String> multiValueMap = new LinkedMultiValueMap();
+ multiValueMap.add("a","b");
+ multiValueMap.add("a", "c");
+ List<String> value = multiValueMap.get("a");
         
 ```
 
