@@ -1,7 +1,7 @@
 ---
 layout: wiki
-title: Chrome
-categories: Chrome
+title: Linux
+categories: Linux
 description: Linux 指令及使用技巧汇总
 keywords: Linux
 ---
