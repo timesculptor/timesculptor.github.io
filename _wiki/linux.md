@@ -17,6 +17,10 @@ keywords: Linux
 | history    | 显示历史命令                |
 | 创建多个目录           | mkdir -p /usr/local/test/bin             |
 | 查看文件末最后几行           | tail -f -10 logs(-f不停地去读最新的内容，有实时监视的效果)             |
+| 下载          | wget  download_url          |
+| 递归删除         | rm -r 文件夹       |
+| 查看进程         | ps -ef |grep name or port        |
+| kill 进程         | kill -9 pid       |
 
 
 
