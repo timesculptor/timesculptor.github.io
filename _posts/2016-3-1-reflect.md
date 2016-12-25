@@ -50,6 +50,7 @@ import java.lang.reflect.Field;
 #### 获取类的信息(类的名字、属性、方法、构造器等)
 
 有如下javabean：
+
 ```java
 package com.test.bean;
 public class User {
@@ -68,7 +69,9 @@ public class User {
     public User() { }
 }
 ```
+
 获取类的信息demo
+
 
 ```java
 public class Demo02 {
