@@ -6,7 +6,7 @@ description: Linux 指令及使用技巧汇总
 keywords: Linux
 ---
 
-## 指令
+## 常用指令
 
 
 | 功能                      | 指令                                |
