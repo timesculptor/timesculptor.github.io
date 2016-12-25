@@ -5,7 +5,7 @@ categories: Java
 description: 反射。
 keywords: reflect
 ---
-给定类的名字，就可以通过反射机制来获得类的所有信息。
+反射机制动态地获取类的一切信息，并可以用这些信息做一些å想做的事情。
 
 ## 反射机制
 
@@ -69,6 +69,7 @@ public class User {
 }
 ```
 获取类的信息demo
+
 ```java
 public class Demo02 {
 	public static void main(String[] args) {
