@@ -47,8 +47,28 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 ```
 
-### 获取类的信息(类的名字、属性、方法、构造器等)
+#### 获取类的信息(类的名字、属性、方法、构造器等)
 
+有如下javabean：
+```java
+package com.test.bean;
+public class User {
+     
+    private int id;
+    private int age;
+    private String name;
+     
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
+    public String getName() { return name; }
+    public void setName(String name) { this.uname = name; }
+    //javabean必须要有无参的构造方法！
+    public User() { }
+}
+```
+获取类的信息demo
 ```java
 public class Demo02 {
 	public static void main(String[] args) {
@@ -87,7 +107,7 @@ public class Demo02 {
 ```
 
 
-### 动态的操作：构造器、方法、属性
+#### 动态的操作：构造器、方法、属性
 
 ```java
 public class Demo03 {
@@ -171,9 +191,7 @@ public static void test01(){
 
 ```java
 普通方法调用，执行10亿次，耗时：2218ms
-
 反射动态方法调用，执行10亿次，耗时：63427ms
-
 反射动态方法调用，跳过安全检查，执行10亿次，耗时：14335ms
 ```
 
