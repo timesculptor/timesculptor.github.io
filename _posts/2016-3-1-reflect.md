@@ -19,14 +19,14 @@ java.lang.Class类十分特殊，用来表示java中类型本身。
 Class类是Reflection的根源。针对任何想动态加载、运行的类，唯有先获得相应的Class 对象。一个类被加载后，JVM会创建一个对应该类的Class对象，类的整个结构信息会放到对应的Class对象中。
 
 Java中获取class类的对象有如下几种方式：
-- 通过`Class.forName()`(最常用)
-- 通过`.class 语法`
-- 运用`getClass()`
 
-例如下面三种方式：
+* 通过`Class.forName()`(最常用)
+* 通过`.class 语法`
+* 运用`getClass()`
+
+例如：
 
 ```java
-
 String path = "com.test.bean.User";
 Class clazz1 = Class.forName(path);
           
@@ -34,8 +34,8 @@ Class strClazz = String.class;
 Class intClazz =int.class;
   
 Class strClazz2 = path.getClass();
-  
 ```
+
 ## 应用反射API
 
 通过反射机制访问java对象的属性，方法，构造方法
@@ -168,13 +168,16 @@ public static void test01(){
     }
 ```
 执行结果：
-```
+
+```java
 普通方法调用，执行10亿次，耗时：2218ms
+
 反射动态方法调用，执行10亿次，耗时：63427ms
+
 反射动态方法调用，跳过安全检查，执行10亿次，耗时：14335ms
 ```
-<pre>
+
 显然，通过测试发现反射比普通方法调用效率大大降低，但是可以通过禁止访问安全检查提高效率。万事都有利弊，反射降低了运行效率，但是灵活性提高了开发效率。
-</pre>
+
 
 
