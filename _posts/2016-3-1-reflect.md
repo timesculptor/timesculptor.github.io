@@ -1,77 +1,50 @@
-###java反射
-
+---
+layout: post
+title: Java反射机制
+categories: Java
+description: 反射。
+keywords: reflect
+---
+给定类的名字，就可以通过反射机制来获得类的所有信息。
 @(反射)
-####反射机制
-<pre>
-Java语言允许通过程序化的方式间接对Class进行操作，Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数、属性和方法等。Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能，这就为使用程序化方式操作Class对象开辟了途径。
-</pre>
->所谓反射，是指在运行时状态中，获取类中的属性和方法，以及调用其中的方法的一种机制。这种机制的作用在于获取运行时才知道的类（Class）及其中的属性（Field）、方法（Method）以及调用其中的方法，也可以设置其中的属性值。
+## 反射机制
 
-**Class类**
->java.lang.Class类十分特殊，用来表示java中类型本身。
->Class类是Reflection的根源。针对任何想动态加载、运行的类，唯有先获得相应的Class 对象
+所谓反射，是指在运行时状态中，获取类中的属性和方法，以及调用其中的方法的一种机制。这种机制的作用在于获取运行时才知道的类（Class）及其中的属性（Field）、方法（Method）以及调用其中的方法，也可以设置其中的属性值。
+
+Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数、属性和方法等。Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能。
+
+## Class类
+
+java.lang.Class类十分特殊，用来表示java中类型本身。
+Class类是Reflection的根源。针对任何想动态加载、运行的类，唯有先获得相应的Class 对象。一个类被加载后，JVM会创建一个对应该类的Class对象，类的整个结构信息会放到对应的Class对象中。
 
 Java中获取class类的对象有如下几种方式：
 - 通过`Class.forName()`(最常用)
 - 通过`.class 语法`
 - 运用`getClass()`
 
-有如下javabean：
+例如下面三种方式：
+
 ```java
-package com.test.bean;
-public class User {
-     
-    private int id;
-    private int age;
-    private String name;
-     
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getName() {
-        return name;
-    }
-     
-    public void setName(String name) {
-        this.uname = name;
-    }
-  
-    //javabean必须要有无参的构造方法！
-    public User() {
-    }
-}
-```
-几种方式：
-```java
+
 String path = "com.test.bean.User";
-//第一种
-Class clazz = Class.forName(path);
-//对象是表示或封装一些数据。  一个类被加载后，JVM会创建一个对应该类的Class对象，类的整个结构信息会放到对应的Class对象中。
-//这个Class对象就像一面镜子一样，通过这面镜子我可以看到对应类的全部信息。
-Class clazz2 = Class.forName(path); //一个类只对应一个Class对象
-//第二种            
+Class clazz1 = Class.forName(path);
+          
 Class strClazz = String.class;
-Class intClazz =int.class;  
-//第三种
-Class strClazz2 = path.getClass();  
+Class intClazz =int.class;
+  
+Class strClazz2 = path.getClass();
+  
 ```
-####反射具体功能实现
-<pre>
+## 反射具体功能实现
 通过反射机制访问java对象的属性，方法，构造方法
 sun提供了反射机制中的类
-</pre>
->import java.lang.reflect.Constructor;
->import java.lang.reflect.Method;
->import java.lang.reflect.Field;
+
+```java
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Field;
+```
 
 **应用反射的API，获取类的信息(类的名字、属性、方法、构造器等)**
 ```java

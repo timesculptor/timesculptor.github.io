@@ -29,7 +29,6 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 
   
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
@@ -80,8 +79,6 @@ MyBatis Generator(MBG)，可以逆向生成持久层的基本代码，可以自�
 
 	</context>
 </generatorConfiguration>
-
-
 ```
 
 ### 运行java生成程序
@@ -118,8 +115,6 @@ public class GeneratorSqlmap {
 	}
 
 }
-
-
 ```
 使用生成的文件
 

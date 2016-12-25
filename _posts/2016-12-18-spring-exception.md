@@ -22,7 +22,6 @@ spring mvc可以通过实现HandlerExceptionResolver接口自定义异常。Hand
 继承HandlerExceptionResolver并实现其方法
 
 ```java
-
 public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
@@ -52,17 +51,14 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
         }
     }
 }
-
 ```
 
 ### 在mvc配置文件中配置全局异常处理器
   
 ```xml
-
 <bean id="exceptionResolver"
           class="com.springapp.mvc.exception.GlobalExceptionResolver">
 </bean>
-
 ```
 
 ### 在视图中解析异常信息
@@ -82,14 +78,12 @@ ${errorResponse}
 ## 示例
 
 ```java
-
 	@RequestMapping(value = "/testPage")
 	@ResponseBody
 	public  String test1(){
 		int a = 1/0;
 		return "ok";
 	}
-	
 ```
 	
 返回结果：

@@ -14,12 +14,10 @@ keywords: Map
 package com.google.common.collect;
 
 ```java
-
  ListMultimap<String,String> multiMap = ArrayListMultimap.create();
  multiMap.put("a","b");
  multiMap.put("a", "c");
- List<String> value = multiMap.get("a");
-                
+ List<String> value = multiMap.get("a");             
 ```
 对集合的扩充和增强，无论从简洁、易读和易维护等方面，gauva都是首选的。
 
@@ -27,12 +25,10 @@ package com.google.common.collect;
 ![](/images/posts/java/Apache-collection.jpeg)
   
 ```java
-
  MultiValueMap  multiValueMap = new MultiValueMap();
  multiValueMap.put("a","b");
  multiValueMap.put("a", "c");
- Collection a =multiValueMap.getCollection("a");
-        
+ Collection a =multiValueMap.getCollection("a");      
 ```
 
 ## Spring MultiValueMap
@@ -42,12 +38,10 @@ package com.google.common.collect;
 
 
 ```java
-
  MultiValueMap<String,String> multiValueMap = new LinkedMultiValueMap();
  multiValueMap.add("a","b");
  multiValueMap.add("a", "c");
- List<String> value = multiValueMap.get("a");
-        
+ List<String> value = multiValueMap.get("a");       
 ```
 
 spring的实现最简单，通过封装```Map<K, List<V>> map```结构
