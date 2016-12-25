@@ -5,7 +5,7 @@ categories: Java
 description: 反射。
 keywords: reflect
 ---
-反射机制动态地获取类的一切信息，并可以用这些信息做一些å想做的事情。
+反射机制动态地获取类的一切信息，并可以用这些信息做一些想做的事情。
 
 ## 反射机制
 
@@ -64,9 +64,14 @@ public class User {
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
     public String getName() { return name; }
-    public void setName(String name) { this.uname = name; }
-    //javabean必须要有无参的构造方法！
+    public void setName(String name) { this.name = name; }
+    //必须要有无参的构造方法，否则构造对象的时候要先拿到有参数的构造方法，然后赋予参数再构建对象。
     public User() { }
+    public User(int id,int age, String name) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+    }
 }
 ```
 
@@ -75,41 +80,60 @@ public class User {
 
 ```java
 public class Demo02 {
-	public static void main(String[] args) {
-		String path = "com.test.bean.User";
-		Class clazz = Class.forName(path);
-		//获取类的名字
-		System.out.println(clazz.getName());//获得包名+类名：com.test.bean.User
-		System.out.println(clazz.getSimpleName());  //获的类名：User
-             
-		//获取属性信息
-		//Field[] fields = clazz.getFields(); //只能获得public的field
-		Field[] fields = clazz.getDeclaredFields();//获得所有的field
-		Field f = clazz.getDeclaredField("name");
-		System.out.println(fields.length);
-		for(Field temp:fields){
-			System.out.println("属性："+temp);
-		}
-		//获取方法信息
-		Method[] methods = clazz.getDeclaredMethods();
-		Method m01 = clazz.getDeclaredMethod("getName", null);
-		//如果方法有参，则必须传递参数类型对应的class对象(有重载时可区分)
-		Method m02 = clazz.getDeclaredMethod("setUname", String.class); 
-		for(Method m:methods){
-			System.out.println("方法："+m);
-		}
-             
-		//获得构造器信息
-		Constructor[] constructors = clazz.getDeclaredConstructors();
-		Constructor c = clazz.getDeclaredConstructor(int.class,int.class,String.class);
-		System.out.println("获得构造器："+c);
-		for(Constructor temp:constructors){
-			System.out.println("构造器："+temp);
-		}
-	}
-}         
+    public static void main(String[] args) throws NoSuchFieldException, ClassNotFoundException, NoSuchMethodException {
+        String path = "com.test.bean.User";
+        Class clazz = Class.forName(path);
+        //获取类的名字
+        System.out.println(clazz.getName());//获得包名+类名：com.test.bean.User
+        System.out.println(clazz.getSimpleName());  //获的类名：User
+
+        //获取属性信息
+        //Field[] fields = clazz.getFields(); //只能获得public的field
+        Field[] fields = clazz.getDeclaredFields();//获得所有的field
+        Field f = clazz.getDeclaredField("name");
+        System.out.println(fields.length);
+        for (Field temp : fields) {
+            System.out.println("属性：" + temp);
+        }
+        //获取方法信息
+        Method[] methods = clazz.getDeclaredMethods();
+        Method m01 = clazz.getDeclaredMethod("getName", null);
+        //如果方法有参，则必须传递参数类型对应的class对象(有重载时可区分)
+        Method m02 = clazz.getDeclaredMethod("setName", String.class);
+        for (Method m : methods) {
+            System.out.println("方法：" + m);
+        }
+
+        //获得构造器信息
+        Constructor[] constructors = clazz.getDeclaredConstructors();
+        //Constructor c = clazz.getDeclaredConstructor(int.class,int.class,String.class);
+        //System.out.println("获得构造器："+c);
+        for (Constructor temp : constructors) {
+            System.out.println("构造器：" + temp);
+        }
+    }
+}
+
 ```
 
+输出结果：
+
+```java
+com.test.bean.User
+User
+3
+属性：private int cn.qs.reflect.User.id
+属性：private int cn.qs.reflect.User.age
+属性：private java.lang.String cn.qs.reflect.User.name
+方法：public java.lang.String cn.qs.reflect.User.getName()
+方法：public void cn.qs.reflect.User.setName(java.lang.String)
+方法：public int cn.qs.reflect.User.getId()
+方法：public void cn.qs.reflect.User.setId(int)
+方法：public int cn.qs.reflect.User.getAge()
+方法：public void cn.qs.reflect.User.setAge(int)
+构造器：public cn.qs.reflect.User(int,int,java.lang.String)
+构造器：public cn.qs.reflect.User()
+```
 
 #### 动态的操作：构造器、方法、属性
 
@@ -142,6 +166,16 @@ public class Demo03 {
 }
 ```
 
+输出结果：
+
+```java
+com.test.bean.User@723279cf
+Tim
+tom
+Amay
+Amay
+```
+
 ## 反射性能问题
 
 **`setAccessible`**
@@ -149,48 +183,34 @@ public class Demo03 {
 -  禁止安全检查，可以提高反射的运行速度。
 
 ```java
-public static void test01(){
-        User u = new User();
-        long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 1000000000L; i++) {
-            u.getName();
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println("普通方法调用，执行10亿次，耗时："+(endTime-startTime)+"ms"); 
+public class Demo03 {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException, ClassNotFoundException {
+        String path = "cn.qs.reflect.User";
+        Class<User> clazz = (Class<User>) Class.forName(path);
+        //通过反射API调用构造方法，构造对象
+        User u = clazz.newInstance();   //其实是调用了User的无参构造方法
+        System.out.println(u);
+        Constructor<User> c = clazz.getDeclaredConstructor(int.class, int.class, String.class);
+        User u2 = c.newInstance(1001, 18, "Tim");
+        System.out.println(u2.getName());
+
+        //通过反射API调用普通方法
+        User u3 = clazz.newInstance();
+        Method method = clazz.getDeclaredMethod("setName", String.class);
+        method.invoke(u3, "tom");   //u3.setUname("tom");
+        System.out.println(u3.getName());
+
+        //通过反射API操作属性
+        User u4 = clazz.newInstance();
+        Field f = clazz.getDeclaredField("name");
+        f.setAccessible(true); //这个属性不需要做安全检查了，可以直接访问
+        f.set(u4, "Amay");       //通过反射直接写属性
+        System.out.println(u4.getName());  //通过反射直接读属性的值
+        System.out.println(f.get(u4));
     }
-     
-    public static void test02() throws Exception{
-        User u = new User();
-        Class clazz = u.getClass();
-        Method m = clazz.getDeclaredMethod("getName", null);
-        //m.setAccessible(true);
-		long startTime = System.currentTimeMillis(); 
-        for (int i = 0; i < 1000000000L; i++) {
-            m.invoke(u, null);
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println("反射动态方法调用，执行10亿次，耗时："+(endTime-startTime)+"ms");
-    }
-     
-    public static void test03() throws Exception{
-        User u = new User();
-        Class clazz = u.getClass();
-        Method m = clazz.getDeclaredMethod("getName", null);
-        m.setAccessible(true);  //不需要执行访问安全检查
-        long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 1000000000L; i++) {
-            m.invoke(u, null);
-        }
-         
-        long endTime = System.currentTimeMillis();
-        System.out.println("反射动态方法调用，跳过安全检查，执行10亿次，耗时："+(endTime-startTime)+"ms");
-    }
-     public static void main(String[] args) throws Exception {
-        test01();
-        test02();
-        test03();
-    }
+}
 ```
+
 执行结果：
 
 ```java
