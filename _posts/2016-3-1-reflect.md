@@ -6,7 +6,7 @@ description: 反射。
 keywords: reflect
 ---
 给定类的名字，就可以通过反射机制来获得类的所有信息。
-@(反射)
+
 ## 反射机制
 
 所谓反射，是指在运行时状态中，获取类中的属性和方法，以及调用其中的方法的一种机制。这种机制的作用在于获取运行时才知道的类（Class）及其中的属性（Field）、方法（Method）以及调用其中的方法，也可以设置其中的属性值。
@@ -36,7 +36,8 @@ Class intClazz =int.class;
 Class strClazz2 = path.getClass();
   
 ```
-## 反射具体功能实现
+## 应用反射API
+
 通过反射机制访问java对象的属性，方法，构造方法
 sun提供了反射机制中的类
 
@@ -46,7 +47,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 ```
 
-**应用反射的API，获取类的信息(类的名字、属性、方法、构造器等)**
+### 获取类的信息(类的名字、属性、方法、构造器等)
+
 ```java
 public class Demo02 {
 	public static void main(String[] args) {
@@ -83,7 +85,10 @@ public class Demo02 {
 	}
 }         
 ```
-**通过反射API动态的操作：构造器、方法、属性**
+
+
+### 动态的操作：构造器、方法、属性
+
 ```java
 public class Demo03 {
     public static void main(String[] args) {
@@ -112,10 +117,13 @@ public class Demo03 {
 	}
 }
 ```
-####反射性能问题
+
+## 反射性能问题
+
 **`setAccessible`**
 - 启用和禁用访问安全检查的开关,值为 true 则指示反射的对象在使用时应该取消 Java 语言访问检查。值为 false 则指示反射的对象应该实施 Java 语言访问检查。并不是为true就能访问为false就不能访问。
 -  禁止安全检查，可以提高反射的运行速度。
+
 ```java
 public static void test01(){
         User u = new User();
