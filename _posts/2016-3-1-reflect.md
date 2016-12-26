@@ -113,7 +113,6 @@ public class Demo02 {
         }
     }
 }
-
 ```
 
 输出结果：
@@ -186,7 +185,7 @@ Amay
 ```java
 public class Demo03 {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException, ClassNotFoundException {
-        String path = "cn.qs.reflect.User";
+        String path = "com.test.bean.User";
         Class<User> clazz = (Class<User>) Class.forName(path);
         //通过反射API调用构造方法，构造对象
         User u = clazz.newInstance();   //其实是调用了User的无参构造方法
