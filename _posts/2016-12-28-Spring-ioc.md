@@ -55,7 +55,7 @@ public class SpringContext implements ApplicationContextAware{
 <bean class="com.springapp.mvc.common.util.SpringContext"></bean>
 ```
 
-之后既可以在其他地方通过 SpringContext.getBean("beanName") 得到容器中的bean;
+之后既可以在其他地方通过`SpringContext.getBean("beanName")`得到容器中的bean
 
 ## EnvironmentAware
 
