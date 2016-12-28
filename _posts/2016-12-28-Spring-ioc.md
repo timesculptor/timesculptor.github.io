@@ -11,6 +11,19 @@ XXXAware在spring里表示XXX可感知。
 
 Spring有许多Aware结尾接口，实现这些Aware接口的bean在被初始化之后，可以取得一些对应的资源。在初始化bean时，会检测是是否实现了这些接口并调用接口中的setter方法。
 
+| Aware接口                     | 功能                                |
+|:--------------------------|:--------------------------------------|
+|    BeanNameAware | 可以在bean中得到它在IoC容器中的bean实例名称 |
+| BeanFactoryAware） | 得到bean所在的IoC容器                |
+| ApplicationContentAware| 得到bean所在的应用上下文                |
+| ApplicationEventPublisherAware   | 得到bean所在的应用上下文事件发布器|
+| ServletConfigAware     | web ServletConfig            |
+| ServletContextAware    | web ServletContext     |
+| EnvironmentAware         | web 环境         |
+| ResourceLoaderAware       | 资源加载器       |
+
+
+
 ## ApplicationContentAware
 
 ApplicationContentAware可以在bean中得到bean所在的应用上下文，从而直接在bean中使用应用上下文的服务。
