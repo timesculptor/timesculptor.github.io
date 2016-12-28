@@ -4,9 +4,9 @@
 baseurl:
 url: https://timesculptor.github.io/
 date_format: "ordinal"
-title: timesculptor
+title: xings
 subtitle: "unexamined life is not worth living"
-description: "timesculptor的个人博客"
+description: "xings的个人博客"
 keywords: timesculptor,编码
 favicon: /favicon.ico
 timezone: Asia/Beijing
