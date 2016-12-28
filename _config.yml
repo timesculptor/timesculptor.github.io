@@ -5,11 +5,11 @@ baseurl:
 url: https://timesculptor.github.io/
 date_format: "ordinal"
 title: timesculptor
-subtitle: "The unexamined life is not worth living"
+subtitle: "unexamined life is not worth living"
 description: "timesculptor的个人博客"
 keywords: timesculptor,编码
 favicon: /favicon.ico
-timezone: Asia/Shanghai
+timezone: Asia/Beijing
 encoding: "utf-8"
 side_bar_repo_limit: 5
 
