@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spring mvc自定义全局异常处理
-categories: Java
+categories: Spring
 description: Spring mvc全局异常处理。
 keywords: Spring
 ---
