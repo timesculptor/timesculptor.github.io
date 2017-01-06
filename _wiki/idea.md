@@ -1,9 +1,9 @@
 ---
 layout: wiki
-title: idea
-categories: idea
-description: idea 快捷键及使用技巧汇总
-keywords: idea
+title: Idea
+categories: Idea
+description: Idea 快捷键及使用技巧汇总
+keywords: Idea
 ---
 
 ## 快捷键
