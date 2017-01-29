@@ -21,6 +21,22 @@ keywords: Linux
 | 递归删除         | rm -r 文件夹       |
 | 查看进程         | ps -ef &#124;grep name or port        |
 | kill 进程         | kill -9 pid       |
+| 查看防火墙状态         | service iptables status       |
+| 开启火墙        | service iptables start       |
+| 关闭防火墙 (临时)        | service iptables stop       |
+| 关闭防火墙 (下次开机一直关闭)        | chkconfig iptables off  |
+| 验证查看防火墙是否关闭     | chkconfig --list&#124;grep iptables  |
+| 重启     | shutdown -r now |
+| 关机     | shutdown -h now |
+
+
+
+
+
+
+
+
+
 
 
 
