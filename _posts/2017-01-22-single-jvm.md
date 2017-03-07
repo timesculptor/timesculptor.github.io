@@ -18,21 +18,19 @@ keywords: singleton
 
 是指在某些情况下，JVM隐含的执行了同步synchronized，如初始换静态数据时会进行同步控制。
 
-## 单例模式-内部类
+## 单例模式-静态内部类
 
 
 ```java
-public class LazySingleton {
-    
-    private LazySingleton() { }
+public class Singleton {
+    private Singleton(){}
 
-    private static LazySingleton lazySingleton = null;
-
-    public static LazySingleton getInstance() {
-        if (lazySingleton == null) {
-            lazySingleton = new LazySingleton();
-        }
-        return lazySingleton;
+    public static Singleton getInstance(){
+        return Nested.singleton;
     }
-}  
+    
+    static class Nested{
+        private static Singleton singleton = new Singleton();
+    }
+}
 ```
