@@ -28,7 +28,10 @@ keywords: Linux
 | 验证查看防火墙是否关闭     | chkconfig --list&#124;grep iptables  |
 | 重启     | shutdown -r now |
 | 关机     | shutdown -h now |
-
+|统计行数|cat api.log |grep ERR | wc -l|
+|jps |显示当前所有java进程pid|
+|ps -mp 3630 -o THREAD,tid,time|列出pid包含的所有线程信息及线程id(tid)|
+|printf "%x\n” tid|将tid转16进制|
 
 
 
